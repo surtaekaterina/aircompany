@@ -1,14 +1,12 @@
 import models.MilitaryType;
-import org.planes.MilitaryPlane;
-import org.planes.PassengerPlane;
-import org.planes.Plane;
+import Planes.MilitaryPlane;
+import Planes.PassengerPlane;
+import Planes.Plane;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Runner {
-    private static final Logger LOG = Logger.getLogger(Runner.class.getName());
     static List<Plane> planes = Arrays.asList(
             new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
             new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
@@ -30,12 +28,13 @@ public class Runner {
         Airport airport = new Airport(planes);
         Airport militaryAirport = new Airport(airport.getMilitaryPlanes());
         Airport passengerAirport = new Airport(airport.getPasPl());
-        LOG.info("Military airport sorted by max distance: " + militaryAirport
+        System.out.println("Military airport sorted by max distance: " + militaryAirport
                 .sortByMaxDistance()
                 .toString());
-        LOG.info("Passenger airport sorted by max speed: " + passengerAirport
+        System.out.println("Passenger airport sorted by max speed: " + passengerAirport
                 .sortByMaxSpeed()
                 .toString());
-        LOG.info("Plane with max passenger capacity: " + passengerAirport.getPassengerPlaneWithMaxPassengersCapacity());
+
+        System.out.println("Plane with max passenger capacity: " + passengerAirport.getPassengerPlaneWithMaxPassengersCapacity());
     }
 }
